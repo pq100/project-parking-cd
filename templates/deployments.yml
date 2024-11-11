@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: msa-register-service
-  namespace: project-parking-cd  # 네임스페이스 추가
 spec:
   replicas: 1
   selector:
@@ -46,7 +45,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: msa-payment-service
-  namespace: project-parking-cd  # 네임스페이스 추가
 spec:
   replicas: 1
   selector:
@@ -90,7 +88,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: msa-product-service
-  namespace: project-parking-cd  # 네임스페이스 추가
 spec:
   replicas: 1
   selector:
@@ -134,7 +131,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: msa-statistics-service
-  namespace: project-parking-cd  # 네임스페이스 추가
 spec:
   replicas: 1
   selector:
