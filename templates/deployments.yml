@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: msa-register-service
-          image: docker.io/yoon741/msa_register_service:v1
+          image: docker.io/yoon741/msa_register_service
           ports:
             - containerPort: 8000
           env:
