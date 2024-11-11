@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: msa-register-service
+  namespace: project-parking-cd  # 네임스페이스 추가
 spec:
   replicas: 1
   selector:
@@ -14,15 +15,15 @@ spec:
     spec:
       containers:
         - name: msa-register-service
-          image: docker.io/yoon741/msa_register_service:v1  # 이미지 이름 수정
+          image: docker.io/yoon741/msa_register_service:v1
           ports:
             - containerPort: 8000
           env:
             - name: MYSQL_USER
               valueFrom:
                 secretKeyRef:
-                  name: db-secret  # Secret 이름
-                  key: MYSQL_USER  # Secret 키
+                  name: db-secret
+                  key: MYSQL_USER
             - name: MYSQL_PASSWORD
               valueFrom:
                 secretKeyRef:
@@ -40,10 +41,12 @@ spec:
             - name: CORS_ORIGINS
               value: "http://13.208.181.230:30010,http://front-nodejs-svc:3000"
 ---
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: msa-payment-service
+  namespace: project-parking-cd  # 네임스페이스 추가
 spec:
   replicas: 1
   selector:
@@ -56,15 +59,15 @@ spec:
     spec:
       containers:
         - name: msa-payment-service
-          image: docker.io/ashashrain/parking-payment-service:v4  # 이미지 이름 수정
+          image: docker.io/ashashrain/parking-payment-service:v4
           ports:
             - containerPort: 8001
           env:
             - name: MYSQL_USER
               valueFrom:
                 secretKeyRef:
-                  name: db-secret  # Secret 이름
-                  key: MYSQL_USER  # Secret 키
+                  name: db-secret
+                  key: MYSQL_USER
             - name: MYSQL_PASSWORD
               valueFrom:
                 secretKeyRef:
@@ -82,10 +85,12 @@ spec:
             - name: CORS_ORIGINS
               value: "http://13.208.181.230:30010,http://front-nodejs-svc:3000"
 ---
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: msa-product-service
+  namespace: project-parking-cd  # 네임스페이스 추가
 spec:
   replicas: 1
   selector:
@@ -98,15 +103,15 @@ spec:
     spec:
       containers:
         - name: msa-product-service
-          image: docdker/parking  # 이미지 이름 수정
+          image: docdker/parking
           ports:
             - containerPort: 8002
           env:
             - name: MYSQL_USER
               valueFrom:
                 secretKeyRef:
-                  name: db-secret  # Secret 이름
-                  key: MYSQL_USER  # Secret 키
+                  name: db-secret
+                  key: MYSQL_USER
             - name: MYSQL_PASSWORD
               valueFrom:
                 secretKeyRef:
@@ -124,10 +129,12 @@ spec:
             - name: CORS_ORIGINS
               value: "http://13.208.181.230:30010,http://front-nodejs-svc:3000"
 ---
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: msa-statistics-service
+  namespace: project-parking-cd  # 네임스페이스 추가
 spec:
   replicas: 1
   selector:
@@ -140,16 +147,15 @@ spec:
     spec:
       containers:
         - name: msa-statistics-service
-          image: snicuz0588/msa-statistics-service:v5  # 이미지 이름 수정
-#          image: docdker/statistics:v4
+          image: snicuz0588/msa-statistics-service:v5
           ports:
             - containerPort: 8003
           env:
             - name: MYSQL_USER
               valueFrom:
                 secretKeyRef:
-                  name: db-secret  # Secret 이름
-                  key: MYSQL_USER  # Secret 키
+                  name: db-secret
+                  key: MYSQL_USER
             - name: MYSQL_PASSWORD
               valueFrom:
                 secretKeyRef:
