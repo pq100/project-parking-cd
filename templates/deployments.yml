@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: msa-register-service
-          image: docker.io/yoon741/msa_register_service
+          image: docker.io/yoon741/msa_register_service:v2
           ports:
             - containerPort: 8000
           env:
@@ -57,7 +57,7 @@ spec:
     spec:
       containers:
         - name: msa-payment-service
-          image: docker.io/ashashrain/parking-payment-service:v4
+          image: docker.io/ashashrain/parking-payment-service:v6
           ports:
             - containerPort: 8001
           env:
@@ -100,7 +100,7 @@ spec:
     spec:
       containers:
         - name: msa-product-service
-          image: docdker/parking
+          image: docdker/parking:v2
           ports:
             - containerPort: 8002
           env:
